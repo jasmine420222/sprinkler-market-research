@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智能洒水器市场分析报告 | Smart Sprinkler Market Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0f0d;
+    --surface: #111a15;
+    --surface2: #162019;
+    --border: #1e2e22;
+    --accent: #3bff7a;
+    --accent2: #00c4ff;
+    --accent3: #ffb830;
+    --text: #e8f0ea;
+    --text-muted: #6b8a72;
+    --text-dim: #3d5442;
+    --red: #ff4d4d;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10,15,13,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px 48px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(59,255,122,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0,196,255,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 30% 40% at 60% 70%, rgba(255,184,48,0.04) 0%, transparent 50%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,255,122,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,255,122,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(48px, 8vw, 100px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title .line2 { color: var(--accent); }
+
+  .hero-meta {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-desc {
+    max-width: 480px;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-shrink: 0;
+  }
+
+  .hero-stat-item { text-align: right; }
+
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--accent);
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    right: 48px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+
+  .scroll-hint::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--text-dim);
+  }
+
+  /* SECTIONS */
+  section { padding: 96px 48px; }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+  }
+
+  /* MARKET OVERVIEW */
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 64px;
+  }
+
+  .market-card {
+    background: var(--surface);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .market-card:hover { background: var(--surface2); }
+
+  .market-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .market-card:hover::after { transform: scaleX(1); }
+
+  .card-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .card-value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .card-value .unit {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .card-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .card-cagr {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(59,255,122,0.08);
+    border: 1px solid rgba(59,255,122,0.2);
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+  }
+
+  .card-cagr::before { content: '↑'; }
+
+  /* TABS */
+  .tab-bar {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    padding: 14px 28px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+
+  .tab-btn:hover { color: var(--text); }
+
+  .tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* CHART BARS */
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 80px;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .bar-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: right;
+    font-family: var(--font-mono);
+  }
+
+  .bar-track {
+    height: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    width: 0;
+  }
+
+  .bar-fill.animated { /* set by JS */ }
+
+  .bar-val {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--bg);
+    font-weight: 500;
+  }
+
+  .bar-cagr {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-align: right;
+  }
+
+  /* PRICE TABLE */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .price-cell {
+    background: var(--surface);
+    padding: 24px 20px;
+    position: relative;
+  }
+
+  .price-cell.header {
+    background: var(--surface2);
+    padding: 16px 20px;
+  }
+
+  .price-range {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .price-sales {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .price-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .price-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    padding: 3px 8px;
+    margin-top: 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .badge-hot { background: rgba(59,255,122,0.12); color: var(--accent); border: 1px solid rgba(59,255,122,0.25); }
+  .badge-warn { background: rgba(255,77,77,0.1); color: var(--red); border: 1px solid rgba(255,77,77,0.2); }
+  .badge-mid { background: rgba(0,196,255,0.1); color: var(--accent2); border: 1px solid rgba(0,196,255,0.2); }
+  .badge-low { background: rgba(255,184,48,0.1); color: var(--accent3); border: 1px solid rgba(255,184,48,0.2); }
+
+  /* COMPETITOR TABLE */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .comp-table th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .comp-table td {
+    padding: 20px;
+    border-bottom: 1px solid rgba(30,46,34,0.5);
+    font-size: 13px;
+    vertical-align: middle;
+  }
+
+  .comp-table tr:hover td { background: rgba(59,255,122,0.02); }
+
+  .comp-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .comp-brand-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .stars {
+    color: var(--accent3);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .price-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent2);
+  }
+
+  .comp-pro { color: var(--accent); font-size: 12px; }
+  .comp-con { color: var(--red); font-size: 12px; }
+
+  /* USER CARDS */
+  .user-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .user-card {
+    border: 1px solid var(--border);
+    padding: 32px;
+    background: var(--surface);
+    position: relative;
+  }
+
+  .user-type {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .user-type::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .user-profile { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
+
+  .priority-list { list-style: none; }
+
+  .priority-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(30,46,34,0.5);
+    font-size: 13px;
+  }
+
+  .priority-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    width: 20px;
+    flex-shrink: 0;
+  }
+
+  /* TREND SECTION */
+  .trend-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .trend-card {
+    border: 1px solid var(--border);
+    padding: 28px;
+    background: var(--surface);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .trend-card:hover {
+    border-color: rgba(59,255,122,0.3);
+    transform: translateY(-4px);
+  }
+
+  .trend-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .trend-body { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  /* INSIGHT BOX */
+  .insight-box {
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    background: rgba(59,255,122,0.04);
+    margin: 32px 0;
+  }
+
+  .insight-box p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+  .insight-box strong { color: var(--text); font-weight: 500; }
+
+  /* KEYWORD TABLE */
+  .kw-compare {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .kw-col { background: var(--surface); }
+
+  .kw-header {
+    padding: 20px 24px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .kw-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .kw-sub { font-size: 12px; color: var(--text-dim); font-family: var(--font-mono); }
+
+  .kw-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(30,46,34,0.4);
+  }
+
+  .kw-metric { font-size: 12px; color: var(--text-dim); }
+
+  .kw-value {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .kw-value.highlight { color: var(--accent); font-weight: 500; }
+
+  /* SEASONAL */
+  .season-chart {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .season-card {
+    border: 1px solid var(--border);
+    padding: 24px 20px;
+    background: var(--surface);
+    text-align: center;
+  }
+
+  .season-name {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .season-pct {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .season-label { font-size: 12px; color: var(--text-muted); }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 48px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-info { font-size: 12px; color: var(--text-dim); line-height: 1.8; }
+
+  .footer-info strong { color: var(--text-muted); }
+
+  .footer-badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    border: 1px solid rgba(59,255,122,0.2);
+    padding: 8px 16px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .highlight-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .highlight-label {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* OPPORTUNITY */
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .opp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .opp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .opp-card.green::before { background: var(--accent); }
+  .opp-card.blue::before { background: var(--accent2); }
+  .opp-card.orange::before { background: var(--accent3); }
+  .opp-card.red::before { background: var(--red); }
+
+  .opp-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 48px;
+    opacity: 0.15;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    line-height: 1;
+  }
+
+  .opp-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .opp-body { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  /* NAV ACTIVE STATE */
+  .nav-links a.active { color: var(--accent); }
+
+  /* AUTHOR TAG */
+  .hero-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+
+  .author-line {
+    width: 32px;
+    height: 1px;
+    background: var(--text-dim);
+  }
+
+  .author-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+  }
+
+  .author-name strong {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* TREND CARD — no icon version */
+  .trend-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 64px 24px; }
+    .hero { padding: 80px 24px 56px; }
+    .market-grid { grid-template-columns: 1fr; }
+    .price-grid { grid-template-columns: 1fr 1fr; }
+    .kw-compare { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+    .user-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .season-chart { grid-template-columns: 1fr 1fr; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 100px 1fr 60px; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .divider { margin: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">市场研究 · 2024</div>
+  <ul class="nav-links">
+    <li><a href="#market" data-section="market">市场概况</a></li>
+    <li><a href="#smart" data-section="smart">智能 vs 传统</a></li>
+    <li><a href="#competition" data-section="competition">竞争格局</a></li>
+    <li><a href="#users" data-section="users">用户洞察</a></li>
+    <li><a href="#opportunity" data-section="opportunity">市场机会</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-author">
+    <div class="author-line"></div>
+    <span class="author-name">作者 <strong>张嘉敏</strong> 2025</span>
+  </div>
+  <div class="hero-eyebrow">北美园艺灌溉品类 · 深度市场调研</div>
+  <h1 class="hero-title">
+    智能洒水器<br>
+    <span class="line2">市场分析报告</span>
+  </h1>
+  <div class="hero-meta">
+    <p class="hero-desc">
+      基于 Amazon 平台数据、Google Trends 搜索趋势、行业报告及竞品评论的系统性市场调研，聚焦北美智能灌溉设备品类机会与产品策略。
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">15.2%</span>
+        <span class="hero-stat-label">Smart 市场 CAGR</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">$42B</span>
+        <span class="hero-stat-label">2033 全球预测</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">11</span>
+        <span class="hero-stat-label">核心竞品分析</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">Scroll to explore</div>
+</div>
+
+<!-- MARKET OVERVIEW -->
+<section id="market">
+  <div class="section-label">01 · 市场概况</div>
+  <h2 class="section-title">多层市场结构<br>从大到细拆解</h2>
+
+  <div class="market-grid reveal">
+    <div class="market-card">
+      <div class="card-tag">大品类 · Gardening & Lawn Care</div>
+      <div class="card-value">$293<span class="unit">B</span></div>
+      <div class="card-label">2024 年美国市场规模，预计 2033 年达 $487B</div>
+      <span class="card-cagr">CAGR 5.4%</span>
+    </div>
+    <div class="market-card">
+      <div class="card-tag">细分 · Lawn & Garden Watering</div>
+      <div class="card-value">$1.31<span class="unit">B</span></div>
+      <div class="card-label">2022 年草坪花园浇水市场，预计 2028 年达 $1.56B</div>
+      <span class="card-cagr">CAGR 2.99%</span>
+    </div>
+    <div class="market-card">
+      <div class="card-tag">目标品类 · Sprinklers</div>
+      <div class="card-value">$4,158<span class="unit">万</span></div>
+      <div class="card-label">2024 年 Amazon 平台估算销售额，预计 2030 年达 $6,373 万</div>
+      <span class="card-cagr">CAGR 7.4%</span>
+    </div>
+  </div>
+
+  <!-- SMART MARKET BREAKDOWN -->
+  <div class="insight-box reveal">
+    <p><strong>智能洒水系统是最快增长的细分赛道</strong>——全球智能洒水控制系统市场 2024 年达 15 亿美元，预计 2033 年增至 42 亿，CAGR 高达 15.2%，是传统 Sprinkler 品类增速的两倍以上。美国为核心市场，占全球 33% 的增量。</p>
+  </div>
+
+  <!-- PARALLEL CATEGORY BARS -->
+  <div class="section-label" style="margin-top: 48px;">平行品类对比 · 2024 市场规模（万美元）</div>
+
+  <div class="bar-chart reveal" id="barChart">
+    <div class="bar-row">
+      <div class="bar-label">Hose Connectors</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="73" style="background: linear-gradient(90deg, #00c4ff, #0080aa);">
+          <span class="bar-val">14,500</span>
+        </div>
+      </div>
+      <div class="bar-cagr">21.75%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Garden Hoses</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="86" style="background: linear-gradient(90deg, #3bff7a, #22bb55);">
+          <span class="bar-val">17,200</span>
+        </div>
+      </div>
+      <div class="bar-cagr">14.03%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Nozzles</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="15" style="background: linear-gradient(90deg, #ffb830, #cc8800);">
+          <span class="bar-val">3,043</span>
+        </div>
+      </div>
+      <div class="bar-cagr">12.95%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Hose Timers</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="22" style="background: linear-gradient(90deg, #3bff7a, #22bb55);">
+          <span class="bar-val">4,309</span>
+        </div>
+      </div>
+      <div class="bar-cagr">11.60%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Sprinklers</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="21" style="background: linear-gradient(90deg, #3bff7a, #0cc44a); border: 1px solid rgba(59,255,122,0.4);">
+          <span class="bar-val">4,158</span>
+        </div>
+      </div>
+      <div class="bar-cagr" style="color: var(--accent); font-weight: 500;">7.10%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Faucets</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="7" style="background: linear-gradient(90deg, #00c4ff, #0080aa);">
+          <span class="bar-val">1,320</span>
+        </div>
+      </div>
+      <div class="bar-cagr">19.32%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Watering Cans</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="11" style="background: linear-gradient(90deg, #ff4d4d, #aa2222);">
+          <span class="bar-val">2,189</span>
+        </div>
+      </div>
+      <div class="bar-cagr" style="color: var(--red);">-2.65%</div>
+    </div>
+  </div>
+
+  <!-- SEASONAL -->
+  <div class="section-label">季节性分布 · 2024 销售额</div>
+  <div class="season-chart reveal">
+    <div class="season-card">
+      <div class="season-name">Q1 · 冬末春初</div>
+      <div class="season-pct" style="color: var(--text-muted);">6%</div>
+      <div class="season-label">$267 万</div>
+    </div>
+    <div class="season-card">
+      <div class="season-name">Q2 · 春夏旺季</div>
+      <div class="season-pct" style="color: var(--accent);">46%</div>
+      <div class="season-label">$1,903 万 ↑</div>
+    </div>
+    <div class="season-card">
+      <div class="season-name">Q3 · 夏秋延续</div>
+      <div class="season-pct" style="color: var(--accent2);">37%</div>
+      <div class="season-label">$1,533 万</div>
+    </div>
+    <div class="season-card">
+      <div class="season-name">Q4 · 黑五备货</div>
+      <div class="season-pct" style="color: var(--accent3);">11%</div>
+      <div class="season-label">$455 万</div>
+    </div>
+  </div>
+
+  <div class="insight-box reveal">
+    <p><strong>Q2 是最关键的销售窗口</strong>——6 月单月销售额可达 $1,025 万，占全年近一半。Google Trends 数据显示 "sprinkler" 关键词每年 3–6 月搜索热度飙升至 90+，较淡季高出约 20%。产品上市节奏和营销投入应高度集中于 Q1 末至 Q2。</p>
+  </div>
+
+  <!-- PRICE BANDS -->
+  <div class="section-label" style="margin-top: 48px;">价格带分析 · Sprinkler 品类</div>
+  <div class="price-grid reveal">
+    <div class="price-cell">
+      <div class="price-range">$20 以下</div>
+      <div class="price-sales">$1,073 万 / 年</div>
+      <div class="price-note">417 个 SKU，高度红海，平均单品销售额极低</div>
+      <span class="price-badge badge-warn">竞争激烈</span>
+    </div>
+    <div class="price-cell" style="border: 1px solid rgba(59,255,122,0.3); background: rgba(59,255,122,0.03);">
+      <div class="price-range" style="color: var(--accent);">$20–40 ★</div>
+      <div class="price-sales">$2,002 万 / 年</div>
+      <div class="price-note">240 个 SKU，占整体市场六成，均价 $27，最成熟区间</div>
+      <span class="price-badge badge-hot">核心目标区</span>
+    </div>
+    <div class="price-cell">
+      <div class="price-range">$40–60</div>
+      <div class="price-sales">$483 万 / 年</div>
+      <div class="price-note">82 个 SKU，单品效率高，溢价空间存在但尚小</div>
+      <span class="price-badge badge-mid">潜力带</span>
+    </div>
+    <div class="price-cell">
+      <div class="price-range">$60–80</div>
+      <div class="price-sales">$485 万 / 年</div>
+      <div class="price-note">用户基础薄弱，教育成本高，转换率偏低</div>
+      <span class="price-badge badge-low">早期阶段</span>
+    </div>
+    <div class="price-cell">
+      <div class="price-range">$80+</div>
+      <div class="price-sales">$113 万 / 年</div>
+      <div class="price-note">不足 90 个 SKU，市场尚未成熟，不宜过度投入</div>
+      <span class="price-badge badge-warn">谨慎进入</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SMART VS TRADITIONAL -->
+<section id="smart">
+  <div class="section-label">02 · 智能 vs 传统</div>
+  <h2 class="section-title">Smart Sprinkler<br>正在重塑市场格局</h2>
+
+  <!-- KEYWORD COMPARE -->
+  <div class="kw-compare reveal">
+    <div class="kw-col">
+      <div class="kw-header">
+        <div class="kw-name" style="color: var(--accent);">Smart Sprinkler</div>
+        <div class="kw-sub">技术升级型细分产品</div>
+      </div>
+      <div class="kw-row"><span class="kw-metric">月销量</span><span class="kw-value highlight">6,575 件</span></div>
+      <div class="kw-row"><span class="kw-metric">月销售额</span><span class="kw-value highlight">$955 万</span></div>
+      <div class="kw-row"><span class="kw-metric">平均价格</span><span class="kw-value highlight">$160</span></div>
+      <div class="kw-row"><span class="kw-metric">平均评论数</span><span class="kw-value">4,237 条</span></div>
+      <div class="kw-row"><span class="kw-metric">平均上架时间</span><span class="kw-value">63 月</span></div>
+    </div>
+    <div class="kw-col">
+      <div class="kw-header">
+        <div class="kw-name" style="color: var(--accent2);">Sprinkler System</div>
+        <div class="kw-sub">系统型通用产品</div>
+      </div>
+      <div class="kw-row"><span class="kw-metric">月销量</span><span class="kw-value">10,432 件</span></div>
+      <div class="kw-row"><span class="kw-metric">月销售额</span><span class="kw-value">$113 万</span></div>
+      <div class="kw-row"><span class="kw-metric">平均价格</span><span class="kw-value">$70.09</span></div>
+      <div class="kw-row"><span class="kw-metric">平均评论数</span><span class="kw-value">406 条</span></div>
+      <div class="kw-row"><span class="kw-metric">平均上架时间</span><span class="kw-value">90 月</span></div>
+    </div>
+    <div class="kw-col">
+      <div class="kw-header">
+        <div class="kw-name" style="color: var(--text-muted);">Sprinkler</div>
+        <div class="kw-sub">传统基础产品</div>
+      </div>
+      <div class="kw-row"><span class="kw-metric">月销量</span><span class="kw-value">6,243 件</span></div>
+      <div class="kw-row"><span class="kw-metric">月销售额</span><span class="kw-value">$54 万</span></div>
+      <div class="kw-row"><span class="kw-metric">平均价格</span><span class="kw-value">$95</span></div>
+      <div class="kw-row"><span class="kw-metric">平均评论数</span><span class="kw-value">407 条</span></div>
+      <div class="kw-row"><span class="kw-metric">平均上架时间</span><span class="kw-value">112 月</span></div>
+    </div>
+  </div>
+
+  <div class="two-col reveal">
+    <div>
+      <div class="highlight-num" style="margin-bottom: 4px;">17.6×</div>
+      <div class="highlight-label">Smart Sprinkler 月销售额是传统 Sprinkler 的 17.6 倍<br>以更少的销量创造更高的市场价值</div>
+    </div>
+    <div>
+      <p style="color: var(--text-muted); font-size: 14px; line-height: 1.9;">
+        Google Trends 数据显示，"smart sprinkler" 关键词在 2025 年春季搜索热度多次突破 75 指数，呈明显上升趋势。而 "sprinkler system" 这一更通用关键词热度集中在 50–65 之间，增长趋于平稳。<br><br>
+        <strong style="color: var(--text);">Smart Sprinkler 正在持续蚕食传统产品的市场关注份额</strong>，技术升级换代趋势清晰。
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPETITION -->
+<section id="competition">
+  <div class="section-label">03 · 竞争格局</div>
+  <h2 class="section-title">11 款核心竞品<br>全景扫描</h2>
+
+  <!-- TAB BAR -->
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('all')">全部竞品</button>
+    <button class="tab-btn" onclick="switchTab('pros')">功能亮点</button>
+    <button class="tab-btn" onclick="switchTab('cons')">用户痛点</button>
+  </div>
+
+  <div id="tab-all" class="tab-content active">
+    <div class="reveal" style="overflow-x: auto;">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>品牌 / 产品</th>
+            <th>价格区间</th>
+            <th>Amazon 评分</th>
+            <th>3年预估销量</th>
+            <th>主要渠道</th>
+            <th>核心卖点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="comp-name">Rachio</div><div class="comp-brand-tag">8-Zone WiFi Controller</div></td>
+            <td><span class="price-tag">$150–300</span></td>
+            <td><span class="stars">★★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 4.5</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">20,120件</td>
+            <td style="font-size:12px;color:var(--text-muted);">AMZ + Costco + HD</td>
+            <td style="font-size:12px;color:var(--text-muted);">Hyperlocal 天气、漏水检测</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">Wyze</div><div class="comp-brand-tag">WSPRK1 8-Zone</div></td>
+            <td><span class="price-tag">$50–100</span></td>
+            <td><span class="stars">★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 3.7</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">90,240件</td>
+            <td style="font-size:12px;color:var(--text-muted);">AMZ + HD + 官网</td>
+            <td style="font-size:12px;color:var(--text-muted);">超低价位、快速安装</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">Rain Bird</div><div class="comp-brand-tag">ARC8 App WiFi</div></td>
+            <td><span class="price-tag">$100–160</span></td>
+            <td><span class="stars">★★★★</span><span style="font-size:12px;color:var(--text-muted);"> —</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">34,096件</td>
+            <td style="font-size:12px;color:var(--text-muted);">AMZ + HD</td>
+            <td style="font-size:12px;color:var(--text-muted);">EPA 认证、户外防护、品牌口碑</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">Netro</div><div class="comp-brand-tag">6-Zone Smart</div></td>
+            <td><span class="price-tag">$80–100</span></td>
+            <td><span class="stars">★★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 4.3</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">23,830件</td>
+            <td style="font-size:12px;color:var(--text-muted);">AMZ 为主</td>
+            <td style="font-size:12px;color:var(--text-muted);">自学习节水、Alexa 兼容</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">Eve Aqua</div><div class="comp-brand-tag">Bluetooth/Thread</div></td>
+            <td><span class="price-tag">$100–150</span></td>
+            <td><span class="stars">★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 3.4</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">62,800件</td>
+            <td style="font-size:12px;color:var(--text-muted);">AMZ + Apple Store</td>
+            <td style="font-size:12px;color:var(--text-muted);">HomeKit 深度集成、无需桥接</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">Orbit B-hyve XR</div><div class="comp-brand-tag">8-Zone Indoor/Outdoor</div></td>
+            <td><span class="price-tag">$100–150</span></td>
+            <td><span class="stars">★★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 4.3</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">30,567件</td>
+            <td style="font-size:12px;color:var(--text-muted);">AMZ + Lowe's</td>
+            <td style="font-size:12px;color:var(--text-muted);">WeatherSense、Alexa 语音、户外安装</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">ImoLaza</div><div class="comp-brand-tag">ET Master 4th Gen 16-Zone</div></td>
+            <td><span class="price-tag">$299–599</span></td>
+            <td><span class="stars">★★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 4.7</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">8,280件</td>
+            <td style="font-size:12px;color:var(--text-muted);">官网 + AMZ</td>
+            <td style="font-size:12px;color:var(--text-muted);">ET 算法、16区控制、OTA 升级</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">OtO</div><div class="comp-brand-tag">全自动无管线系统</div></td>
+            <td><span class="price-tag">$450–500</span></td>
+            <td><span class="stars">★★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 4.7</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">—</td>
+            <td style="font-size:12px;color:var(--text-muted);">官网为主</td>
+            <td style="font-size:12px;color:var(--text-muted);">免布管、App 区域地图、液体施肥</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">AIPER IrriSense</div><div class="comp-brand-tag">App 智能灌溉系统</div></td>
+            <td><span class="price-tag">$699.99</span></td>
+            <td><span class="stars">★★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 4.3</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">14件</td>
+            <td style="font-size:12px;color:var(--text-muted);">AMZ + 官网</td>
+            <td style="font-size:12px;color:var(--text-muted);">自定义喷洒地图、15 分钟 DIY 安装</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">Yardian Pro</div><div class="comp-brand-tag">8-Zone + 视频监控</div></td>
+            <td><span class="price-tag">$120–250</span></td>
+            <td><span class="stars">★★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 4.3</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">22,540件</td>
+            <td style="font-size:12px;color:var(--text-muted);">官网 + AMZ</td>
+            <td style="font-size:12px;color:var(--text-muted);">灌溉+安防组合、HomeKit + Google</td>
+          </tr>
+          <tr>
+            <td><div class="comp-name">Gardena AquaPrecision</div><div class="comp-brand-tag">太阳能蓝牙控制</div></td>
+            <td><span class="price-tag">$500–700</span></td>
+            <td><span class="stars">★★★★</span><span style="font-size:12px;color:var(--text-muted);"> 3.6</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px;">7件</td>
+            <td style="font-size:12px;color:var(--text-muted);">官网 + AMZ</td>
+            <td style="font-size:12px;color:var(--text-muted);">太阳能供电、免布线、欧洲设计</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="tab-pros" class="tab-content">
+    <div class="trend-grid reveal">
+      <div class="trend-card">
+        <div class="trend-tag">用户好评 · 安装体验</div>
+        <div class="trend-title">安装简便（DIY 化）</div>
+        <div class="trend-body">Rachio（16%）、Orbit（14%）、Wyze（43%）均将安装简便列为首要好评维度。用户强烈偏好无需专业施工、自行完成的产品体验，这是智能灌溉打开 C 端市场的核心门槛。</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-tag">用户好评 · 核心功能</div>
+        <div class="trend-title">天气自适应调度</div>
+        <div class="trend-body">Rachio、Wyze、Orbit 用户均将"smart weather based adjustments"列为高分项，能根据降雨自动跳过浇水计划，显著降低运维成本，是用户感知最直接的智能价值。</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-tag">用户好评 · 生态兼容</div>
+        <div class="trend-title">智能生态集成</div>
+        <div class="trend-body">与 Alexa、Google Assistant、HomeKit 的兼容能力成为重要购买动机。Eve 凭借 HomeKit 深度集成建立了品牌差异化，Yardian 则以"灌溉+安防"融合场景打出独特定位。</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-cons" class="tab-content">
+    <div class="trend-grid reveal">
+      <div class="trend-card" style="border-color: rgba(255,77,77,0.2);">
+        <div class="trend-tag" style="border-color: rgba(255,77,77,0.2); color: var(--red);">用户痛点 · 连接稳定性</div>
+        <div class="trend-title">WiFi 连接稳定性</div>
+        <div class="trend-body">跨品牌最高频痛点：Rachio 21%、Wyze 23%、Rain Bird 9%、Orbit 10% 的差评均指向 WiFi 断连问题。仅支持 2.4GHz、断电后不记忆设置、不兼容 Mesh 网络等问题在多个品牌中反复出现。</div>
+      </div>
+      <div class="trend-card" style="border-color: rgba(255,77,77,0.2);">
+        <div class="trend-tag" style="border-color: rgba(255,77,77,0.2); color: var(--red);">用户痛点 · 订阅机制</div>
+        <div class="trend-title">付费功能与订阅壁垒</div>
+        <div class="trend-body">Rachio 10% 的差评源于"付费功能过多"，用户对核心功能需要订阅才能解锁表示强烈不满。免订阅或功能完整的产品定位（如 Wyze 提供 1 年免费服务）在低价位段具有明显竞争优势。</div>
+      </div>
+      <div class="trend-card" style="border-color: rgba(255,77,77,0.2);">
+        <div class="trend-tag" style="border-color: rgba(255,77,77,0.2); color: var(--red);">用户痛点 · 售后服务</div>
+        <div class="trend-title">售后服务响应差</div>
+        <div class="trend-body">Wyze（21%难以联系客服）、Rachio（8% 售后差）、Rain Bird（2%）均存在售后体验问题。新品牌可以凭借更完善的客户服务体系建立差异化——这是现有竞品的共同软肋。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- USERS -->
+<section id="users">
+  <div class="section-label">04 · 用户洞察</div>
+  <h2 class="section-title">B 端与 C 端<br>差异化需求图谱</h2>
+
+  <div class="user-grid reveal">
+    <div class="user-card">
+      <div class="user-type">C 端用户 · 家庭消费者</div>
+      <p class="user-profile">年龄 30–60 岁中产家庭户主或园艺爱好者，关注庭院景观维护效率与美观度。偏好避免专业施工，追求"省力省水、可自装配"的体验。主要通过 Amazon 评论、测评视频完成购买决策。</p>
+      <ul class="priority-list">
+        <li class="priority-item"><span class="priority-num">01</span>安装简便，DIY 完成</li>
+        <li class="priority-item"><span class="priority-num">02</span>App 操作直观，远程控制</li>
+        <li class="priority-item"><span class="priority-num">03</span>天气自动跳过，省水省心</li>
+        <li class="priority-item"><span class="priority-num">04</span>WiFi 连接稳定可靠</li>
+        <li class="priority-item"><span class="priority-num">05</span>智能家居生态兼容（Alexa/HomeKit）</li>
+      </ul>
+    </div>
+    <div class="user-card">
+      <div class="user-type" style="color: var(--accent2);">B 端用户 · 商业采购者</div>
+      <p class="user-profile">物业管理公司、园艺施工服务商、中小型工程项目采购主，需批量采购系统设备。关注系统稳定性与配置完整度，尤其强调控制器兼容性、区域分区管理与远程控制能力。倾向联系专业供应商对接。</p>
+      <ul class="priority-list">
+        <li class="priority-item"><span class="priority-num" style="color: var(--accent2);">01</span>多区域分区管理（8区+）</li>
+        <li class="priority-item"><span class="priority-num" style="color: var(--accent2);">02</span>系统稳定性与耐用性</li>
+        <li class="priority-item"><span class="priority-num" style="color: var(--accent2);">03</span>批量采购与工程服务支持</li>
+        <li class="priority-item"><span class="priority-num" style="color: var(--accent2);">04</span>WaterSense 认证及节水合规</li>
+        <li class="priority-item"><span class="priority-num" style="color: var(--accent2);">05</span>集成远程管理平台</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CHANNEL -->
+  <div class="section-label">渠道结构</div>
+  <div class="bar-chart reveal" id="channelChart">
+    <div class="bar-row">
+      <div class="bar-label">线下零售（HD/Lowe's）</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="65" style="background: linear-gradient(90deg, #3bff7a, #22bb55);">
+          <span class="bar-val">64.5%</span>
+        </div>
+      </div>
+      <div class="bar-cagr">CAGR 5.9%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">线上电商（Amazon）</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="35" style="background: linear-gradient(90deg, #00c4ff, #0080aa);">
+          <span class="bar-val">~35%</span>
+        </div>
+      </div>
+      <div class="bar-cagr" style="color: var(--accent);">高速增长</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">园艺专营店</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="10" style="background: linear-gradient(90deg, #ffb830, #cc8800);">
+          <span class="bar-val">子集</span>
+        </div>
+      </div>
+      <div class="bar-cagr">稳中增长</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">品牌直销 / 官网</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-width="5" style="background: linear-gradient(90deg, #ff4d4d, #aa2222);">
+          <span class="bar-val">有限</span>
+        </div>
+      </div>
+      <div class="bar-cagr">潜在增长</div>
+    </div>
+  </div>
+
+  <div class="insight-box reveal">
+    <p><strong>线上渠道是智能产品的核心战场</strong>——技术卖点产品（如智能洒水器）在 Amazon 上受益于评论机制、信息透明化和智能家居搜索流量，表现优于传统线下渠道。线上渠道正实现快速增长，适合作为新品牌进入的首选阵地。</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OPPORTUNITY -->
+<section id="opportunity">
+  <div class="section-label">05 · 市场机会</div>
+  <h2 class="section-title">四大结构性<br>机会切入点</h2>
+
+  <div class="opp-grid reveal">
+    <div class="opp-card green">
+      <div class="opp-num">01</div>
+      <div class="opp-title">Retrofit 轻智能改造</div>
+      <div class="opp-body">低成本轻智能 retrofit 解决方案是打开家庭存量市场的关键途径。通过在传统喷头或灌溉系统上加装智能控制模块与基础传感器，用户无需更换整套系统即可实现自动化升级，显著降低转换门槛，适合 $20–60 价格带布局。</div>
+    </div>
+    <div class="opp-card blue">
+      <div class="opp-num">02</div>
+      <div class="opp-title">节水认证 × 政策绑定</div>
+      <div class="opp-body">EPA WaterSense 认证已获多个地方政府与水务局认可。取得认证的产品消费者可获地方补贴或水费减免，显著提升转化率。加州等州的强制景观用水预算制度已形成替换刚需，估算贡献 +4.2% CAGR 增量。</div>
+    </div>
+    <div class="opp-card orange">
+      <div class="opp-num">03</div>
+      <div class="opp-title">稳定连接 × 无订阅壁垒</div>
+      <div class="opp-body">WiFi 断连是跨品牌最高频痛点（各品牌差评中占 9%–23%），付费订阅是第二大不满来源。产品若能做到连接稳定、功能完整无需订阅，即可在现有头部玩家中形成差异化优势，直接转化竞品不满用户。</div>
+    </div>
+    <div class="opp-card red">
+      <div class="opp-num">04</div>
+      <div class="opp-title">灌溉即服务（IaaS）</div>
+      <div class="opp-body">"Irrigation-as-a-Service" 模式为物业公司等 B 端用户提供设备租赁与集中维护方案，降低一次性采购门槛，同时提升系统维护、升级服务的用户粘性。商业模式创新可形成传统产品无法复制的竞争壁垒。</div>
+    </div>
+  </div>
+
+  <!-- GROWTH DRIVERS -->
+  <div class="section-label" style="margin-top: 64px;">核心增长驱动因素</div>
+  <div class="trend-grid reveal">
+    <div class="trend-card">
+      <div class="trend-tag">驱动因素 · 政策</div>
+      <div class="trend-title">政策驱动：节水法规升级</div>
+      <div class="trend-body">加州 SB X7-7 要求 2020 年城市用水下降 20%+，USDA EQIP 与 WaterSMART 框架 2023–2026 年拨款数十亿美元支持精准灌溉升级。政府补贴推动机构客户安装现代化控制系统，法规趋严形成替换刚需。</div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-tag">驱动因素 · 技术</div>
+      <div class="trend-title">技术迭代：IoT 控制器快速渗透</div>
+      <div class="trend-body">智能洒水控制器已被证实每户每年可节水 7,600–8,800 加仑。IoT 连接、天气联动、远程控制正成为主流配置，美国智能灌溉市场年 CAGR 超 14–16%，远高于 Gardening 大类整体增速。</div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-tag">驱动因素 · 消费</div>
+      <div class="trend-title">消费升级：家庭景观投入增加</div>
+      <div class="trend-body">疫情后"户外+家庭景观升级"趋势持续延续，C 端 home sprinkler 搜索热度从 50 指数升至近 90+，峰值出现在 2025 年 4–6 月。近 6 个月 C 端平均销售额增长超 25%，新品接受度高，新上架 ASIN 销量普遍在 2,000+。</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-info">
+    <strong>智能洒水器市场分析报告</strong><br>
+    数据来源：卖家精灵 · Google Trends · IMARC · Mordor Intelligence · Amazon Platform Data<br>
+    研究范围：北美（美国为核心市场）· 数据截止 2024–2025 Q1
+  </div>
+  <div class="footer-badge">Market Research · 2024</div>
+</footer>
+
+<script>
+  // TABS
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // SCROLL REVEAL
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // BAR CHART ANIMATION
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.bar-fill').forEach((bar, i) => {
+          const targetWidth = bar.getAttribute('data-width') + '%';
+          setTimeout(() => {
+            bar.style.width = targetWidth;
+          }, i * 80);
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('#barChart, #channelChart').forEach(chart => {
+    barObserver.observe(chart);
+  });
+
+  // NAV ACTIVE STATE ON SCROLL
+  const sections = ['market', 'smart', 'competition', 'users', 'opportunity'];
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('data-section') === id);
+        });
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) sectionObserver.observe(el);
+  });
+</script>
+</body>
+</html>
