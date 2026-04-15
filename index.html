@@ -819,63 +819,8 @@
 
   .opp-body { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
 
-  /* TOC SIDEBAR */
-  .toc {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 90;
-    padding: 24px 0 24px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .toc-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    cursor: pointer;
-    text-decoration: none;
-    position: relative;
-  }
-
-  .toc-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--text-dim);
-    flex-shrink: 0;
-    transition: background 0.2s, transform 0.2s;
-  }
-
-  .toc-item:hover .toc-dot,
-  .toc-item.active .toc-dot {
-    background: var(--accent);
-    transform: scale(1.4);
-  }
-
-  .toc-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: opacity 0.2s, transform 0.2s, color 0.2s;
-    pointer-events: none;
-  }
-
-  .toc-item:hover .toc-label,
-  .toc-item.active .toc-label {
-    opacity: 1;
-    transform: translateX(0);
-    color: var(--accent);
-  }
+  /* NAV ACTIVE STATE */
+  .nav-links a.active { color: var(--accent); }
 
   /* AUTHOR TAG */
   .hero-author {
@@ -921,7 +866,6 @@
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
-    .toc { display: none; }
     section { padding: 64px 24px; }
     .hero { padding: 80px 24px 56px; }
     .market-grid { grid-template-columns: 1fr; }
@@ -940,42 +884,15 @@
 </head>
 <body>
 
-<!-- TOC SIDEBAR -->
-<nav class="toc" id="tocNav">
-  <a class="toc-item active" href="#hero" data-section="hero">
-    <div class="toc-dot"></div>
-    <span class="toc-label">概览</span>
-  </a>
-  <a class="toc-item" href="#market" data-section="market">
-    <div class="toc-dot"></div>
-    <span class="toc-label">01 · 市场概况</span>
-  </a>
-  <a class="toc-item" href="#smart" data-section="smart">
-    <div class="toc-dot"></div>
-    <span class="toc-label">02 · 智能 vs 传统</span>
-  </a>
-  <a class="toc-item" href="#competition" data-section="competition">
-    <div class="toc-dot"></div>
-    <span class="toc-label">03 · 竞争格局</span>
-  </a>
-  <a class="toc-item" href="#users" data-section="users">
-    <div class="toc-dot"></div>
-    <span class="toc-label">04 · 用户洞察</span>
-  </a>
-  <a class="toc-item" href="#opportunity" data-section="opportunity">
-    <div class="toc-dot"></div>
-    <span class="toc-label">05 · 市场机会</span>
-  </a>
-</nav>
-
 <!-- NAV -->
 <nav>
   <div class="nav-logo">市场研究 · 2024</div>
   <ul class="nav-links">
-    <li><a href="#market">市场概况</a></li>
-    <li><a href="#competition">竞争格局</a></li>
-    <li><a href="#users">用户洞察</a></li>
-    <li><a href="#opportunity">市场机会</a></li>
+    <li><a href="#market" data-section="market">市场概况</a></li>
+    <li><a href="#smart" data-section="smart">智能 vs 传统</a></li>
+    <li><a href="#competition" data-section="competition">竞争格局</a></li>
+    <li><a href="#users" data-section="users">用户洞察</a></li>
+    <li><a href="#opportunity" data-section="opportunity">市场机会</a></li>
   </ul>
 </nav>
 
@@ -986,7 +903,7 @@
 
   <div class="hero-author">
     <div class="author-line"></div>
-    <span class="author-name">作者 <strong>张嘉敏</strong>  · 2024</span>
+    <span class="author-name">作者 <strong>[你的名字]</strong> · 产品策略实习生 · 2024</span>
   </div>
   <div class="hero-eyebrow">北美园艺灌溉品类 · 深度市场调研</div>
   <h1 class="hero-title">
@@ -1579,16 +1496,16 @@
     barObserver.observe(chart);
   });
 
-  // TOC ACTIVE STATE
-  const sections = ['hero', 'market', 'smart', 'competition', 'users', 'opportunity'];
-  const tocItems = document.querySelectorAll('.toc-item');
+  // NAV ACTIVE STATE ON SCROLL
+  const sections = ['market', 'smart', 'competition', 'users', 'opportunity'];
+  const navLinks = document.querySelectorAll('.nav-links a');
 
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
-        tocItems.forEach(item => {
-          item.classList.toggle('active', item.getAttribute('data-section') === id);
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('data-section') === id);
         });
       }
     });
