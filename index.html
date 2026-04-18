@@ -8,17 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0f0d;
-    --surface: #111a15;
-    --surface2: #162019;
-    --border: #1e2e22;
-    --accent: #3bff7a;
-    --accent2: #00c4ff;
-    --accent3: #ffb830;
-    --text: #e8f0ea;
-    --text-muted: #6b8a72;
-    --text-dim: #3d5442;
-    --red: #ff4d4d;
+    --bg: #ffffff;
+    --surface: #f7f8f7;
+    --surface2: #eff1ef;
+    --border: #e2e6e2;
+    --accent: #15803d;
+    --accent2: #0369a1;
+    --accent3: #b45309;
+    --text: #111827;
+    --text-muted: #4b5563;
+    --text-dim: #9ca3af;
+    --red: #b91c1c;
     --font-display: 'Syne', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     --font-mono: 'DM Mono', monospace;
@@ -39,8 +39,7 @@
   body::before {
     content: '';
     position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 9999; opacity: 0.5;
+    pointer-events: none; z-index: 9999; opacity: 0;
   }
 
   /* NAV */
@@ -48,7 +47,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 20px 48px;
     display: flex; justify-content: space-between; align-items: center;
-    background: linear-gradient(to bottom, rgba(10,15,13,0.97), transparent);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.97), transparent);
     backdrop-filter: blur(4px);
   }
   .nav-logo {
@@ -72,15 +71,15 @@
   .hero-bg {
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(59,255,122,0.07) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0,196,255,0.05) 0%, transparent 50%),
-      radial-gradient(ellipse 30% 40% at 60% 70%, rgba(255,184,48,0.04) 0%, transparent 50%);
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(21,128,61,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(3,105,161,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse 30% 40% at 60% 70%, rgba(180,83,9,0.03) 0%, transparent 50%);
   }
   .hero-grid {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(59,255,122,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,255,122,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
   }
@@ -155,7 +154,7 @@
   .card-label { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
   .card-cagr {
     display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(59,255,122,0.08); border: 1px solid rgba(59,255,122,0.2);
+    background: rgba(21,128,61,0.08); border: 1px solid rgba(21,128,61,0.25);
     padding: 4px 10px; border-radius: 2px;
     font-family: var(--font-mono); font-size: 11px; color: var(--accent);
   }
@@ -184,13 +183,13 @@
   .price-sales { font-family: var(--font-mono); font-size: 13px; color: var(--accent); margin-bottom: 6px; }
   .price-note { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
   .price-badge { display: inline-block; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; padding: 3px 8px; margin-top: 10px; border-radius: 2px; text-transform: uppercase; }
-  .badge-hot { background: rgba(59,255,122,0.12); color: var(--accent); border: 1px solid rgba(59,255,122,0.25); }
-  .badge-warn { background: rgba(255,77,77,0.1); color: var(--red); border: 1px solid rgba(255,77,77,0.2); }
-  .badge-mid { background: rgba(0,196,255,0.1); color: var(--accent2); border: 1px solid rgba(0,196,255,0.2); }
-  .badge-low { background: rgba(255,184,48,0.1); color: var(--accent3); border: 1px solid rgba(255,184,48,0.2); }
+  .badge-hot { background: rgba(21,128,61,0.1); color: var(--accent); border: 1px solid rgba(21,128,61,0.3); }
+  .badge-warn { background: rgba(185,28,28,0.08); color: var(--red); border: 1px solid rgba(185,28,28,0.2); }
+  .badge-mid { background: rgba(3,105,161,0.08); color: var(--accent2); border: 1px solid rgba(3,105,161,0.2); }
+  .badge-low { background: rgba(180,83,9,0.08); color: var(--accent3); border: 1px solid rgba(180,83,9,0.2); }
 
   /* INSIGHT BOX */
-  .insight-box { border-left: 3px solid var(--accent); padding: 22px 26px; background: rgba(59,255,122,0.03); margin: 32px 0; }
+  .insight-box { border-left: 3px solid var(--accent); padding: 22px 26px; background: rgba(21,128,61,0.04); margin: 32px 0; }
   .insight-box p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
   .insight-box strong { color: var(--text); font-weight: 500; }
 
@@ -200,7 +199,7 @@
   .kw-header { padding: 20px 24px; background: var(--surface2); border-bottom: 1px solid var(--border); }
   .kw-name { font-family: var(--font-display); font-weight: 700; font-size: 16px; margin-bottom: 4px; }
   .kw-sub { font-size: 12px; color: var(--text-dim); font-family: var(--font-mono); }
-  .kw-row { display: flex; justify-content: space-between; align-items: center; padding: 13px 24px; border-bottom: 1px solid rgba(30,46,34,0.4); }
+  .kw-row { display: flex; justify-content: space-between; align-items: center; padding: 13px 24px; border-bottom: 1px solid var(--border); }
   .kw-metric { font-size: 12px; color: var(--text-dim); }
   .kw-value { font-family: var(--font-mono); font-size: 13px; color: var(--text); }
   .kw-value.hl { color: var(--accent); font-weight: 500; }
@@ -226,8 +225,8 @@
   /* COMP TABLE */
   .comp-table { width: 100%; border-collapse: collapse; }
   .comp-table th { text-align: left; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); padding: 12px 18px; border-bottom: 1px solid var(--border); white-space: nowrap; }
-  .comp-table td { padding: 18px; border-bottom: 1px solid rgba(30,46,34,0.5); font-size: 13px; vertical-align: middle; }
-  .comp-table tr:hover td { background: rgba(59,255,122,0.02); }
+  .comp-table td { padding: 18px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
+  .comp-table tr:hover td { background: rgba(21,128,61,0.03); }
   .comp-name { font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--text); }
   .comp-sub { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); margin-top: 2px; }
   .stars { color: var(--accent3); font-size: 11px; letter-spacing: 1px; }
@@ -236,7 +235,7 @@
   /* TREND CARDS */
   .trend-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
   .trend-card { border: 1px solid var(--border); padding: 28px; background: var(--surface); transition: border-color 0.3s, transform 0.3s; }
-  .trend-card:hover { border-color: rgba(59,255,122,0.25); transform: translateY(-3px); }
+  .trend-card:hover { border-color: rgba(21,128,61,0.4); transform: translateY(-3px); }
   .trend-tag { display: inline-block; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 8px; border: 1px solid var(--border); color: var(--text-dim); margin-bottom: 16px; }
   .trend-title { font-family: var(--font-display); font-weight: 600; font-size: 15px; margin-bottom: 10px; }
   .trend-body { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
@@ -248,7 +247,7 @@
   .user-type::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .user-profile { font-size: 13px; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
   .priority-list { list-style: none; }
-  .priority-item { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(30,46,34,0.5); font-size: 13px; }
+  .priority-item { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
   .priority-num { font-family: var(--font-mono); font-size: 10px; color: var(--accent); width: 20px; flex-shrink: 0; }
 
   /* OPP CARDS */
@@ -267,7 +266,7 @@
   footer { padding: 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
   .footer-info { font-size: 12px; color: var(--text-dim); line-height: 1.9; }
   .footer-info strong { color: var(--text-muted); }
-  .footer-badge { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.12em; border: 1px solid rgba(59,255,122,0.2); padding: 8px 16px; }
+  .footer-badge { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.12em; border: 1px solid rgba(21,128,61,0.3); padding: 8px 16px; }
 
   /* ANIMATION */
   @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
@@ -300,7 +299,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">市场研究 · 2024</div>
+  <div class="nav-logo">市场研究 · 2024–2025</div>
   <ul class="nav-links">
     <li><a href="#market"      data-section="market">市场概况</a></li>
     <li><a href="#smart"       data-section="smart">智能 vs 传统</a></li>
@@ -377,7 +376,8 @@
   </div>
 
   <div class="insight-box reveal">
-    <p><strong>智能洒水系统是最快增长的细分赛道</strong>——全球智能洒水控制系统市场 2024 年达 15 亿美元，预计 2033 年增至 42 亿，CAGR 高达 15.2%，是传统 Sprinkler 品类增速的两倍以上。美国为核心市场，占全球约 33% 的增量。</p>
+    <p><strong>智能洒水系统是最快增长的细分赛道</strong>——全球智能洒水控制系统市场 2024 年达 15 亿美元，预计 2033 年增至 42 亿，CAGR 高达 15.2%<sup style="font-size:10px;color:var(--text-dim)">①</sup>，是传统 Sprinkler 品类增速的两倍以上。美国为核心市场，占全球约 33% 的增量，美国市场 CAGR 约 14%（IMARC，2025–2033）。</p>
+    <p style="margin-top:10px;font-size:11px;color:var(--text-dim);font-family:var(--font-mono)">① 全球口径，数据来源：Business Research Insights（2024）。各机构因研究边界差异，估算区间为 11–21%；本报告采用覆盖 Smart Sprinkler Controller 品类的主流估算值。</p>
   </div>
 
   <div class="section-label" style="margin-top:48px">平行品类对比 · 2024 市场规模（万美元）</div>
@@ -455,10 +455,11 @@
       <div class="price-note">417 个 SKU，竞争高度饱和，平均单品销售额极低</div>
       <span class="price-badge badge-warn">竞争激烈</span>
     </div>
-    <div class="price-cell" style="border:1px solid rgba(59,255,122,0.3);background:rgba(59,255,122,0.02)">
+    <div class="price-cell" style="border:1px solid rgba(21,128,61,0.35);background:rgba(21,128,61,0.04)">
       <div class="price-range" style="color:var(--accent)">$20–40 ★</div>
       <div class="price-sales">$2,002 万 / 年</div>
       <div class="price-note">240 个 SKU，占整体市场六成，均价 $27，最成熟区间</div>
+      <div style="margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--red)">CR3 ≈ 45% · 竞争格局已固化</div>
       <span class="price-badge badge-hot">核心目标区</span>
     </div>
     <div class="price-cell">
@@ -524,6 +525,10 @@
       <div class="kw-row"><span class="kw-metric">平均上架时间</span><span class="kw-value">112 个月</span></div>
     </div>
   </div>
+
+  <p style="font-size:11px;color:var(--text-dim);font-family:var(--font-mono);margin-bottom:32px;padding:12px 16px;border:1px solid var(--border)">
+    * 数据来源：卖家精灵关键词研究（2024）。月销售额为该关键词下所有在榜商品的月度聚合收入，均价为在榜商品的加权平均价格，两者乘积与月销量存在差异属正常数据特征（不同价位 SKU 贡献比例不同）。
+  </p>
 
   <div class="two-col reveal">
     <div>
@@ -677,21 +682,119 @@
 
   <div id="tab-cons" class="tab-content">
     <div class="trend-grid reveal">
-      <div class="trend-card" style="border-color:rgba(255,77,77,0.2)">
-        <div class="trend-tag" style="border-color:rgba(255,77,77,0.2);color:var(--red)">用户痛点 · 连接稳定性</div>
+      <div class="trend-card" style="border-color:rgba(185,28,28,0.2)">
+        <div class="trend-tag" style="border-color:rgba(185,28,28,0.2);color:var(--red)">用户痛点 · 连接稳定性</div>
         <div class="trend-title">WiFi 连接稳定性</div>
         <div class="trend-body">跨品牌最高频痛点：Rachio 21%、Wyze 23%、Rain Bird 9%、Orbit 10% 的差评均指向 WiFi 断连问题。仅支持 2.4GHz、断电后不记忆设置、不兼容 Mesh 网络等问题在多个品牌中反复出现。</div>
       </div>
-      <div class="trend-card" style="border-color:rgba(255,77,77,0.2)">
-        <div class="trend-tag" style="border-color:rgba(255,77,77,0.2);color:var(--red)">用户痛点 · 订阅机制</div>
+      <div class="trend-card" style="border-color:rgba(185,28,28,0.2)">
+        <div class="trend-tag" style="border-color:rgba(185,28,28,0.2);color:var(--red)">用户痛点 · 订阅机制</div>
         <div class="trend-title">付费功能与订阅壁垒</div>
         <div class="trend-body">Rachio 10% 的差评源于付费功能过多，用户对核心功能需订阅才能解锁表示强烈不满。免订阅或功能完整的产品定位在低价位段具有明显竞争优势。</div>
       </div>
-      <div class="trend-card" style="border-color:rgba(255,77,77,0.2)">
-        <div class="trend-tag" style="border-color:rgba(255,77,77,0.2);color:var(--red)">用户痛点 · 售后服务</div>
+      <div class="trend-card" style="border-color:rgba(185,28,28,0.2)">
+        <div class="trend-tag" style="border-color:rgba(185,28,28,0.2);color:var(--red)">用户痛点 · 售后服务</div>
         <div class="trend-title">售后服务响应差</div>
         <div class="trend-body">Wyze（21% 难以联系客服）、Rachio（8% 售后差）均存在售后体验问题。新品牌可凭借更完善的客户服务体系建立差异化——这是现有竞品的共同软肋。</div>
       </div>
+    </div>
+
+    <!-- 跨品牌差评占比对比图 -->
+    <div class="reveal" style="margin-top:48px">
+      <div class="section-label" style="margin-bottom:24px">跨品牌差评占比对比 · 三大核心痛点</div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;min-width:560px">
+          <thead>
+            <tr>
+              <th style="text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--text-dim);padding:10px 16px;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--surface2)">痛点类型</th>
+              <th style="text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--text-dim);padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface2)">Rachio</th>
+              <th style="text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--text-dim);padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface2)">Wyze</th>
+              <th style="text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--text-dim);padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface2)">Rain Bird</th>
+              <th style="text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--text-dim);padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface2)">Orbit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- WiFi 行 -->
+            <tr>
+              <td style="padding:14px 16px;font-size:13px;color:var(--text-muted);border-bottom:1px solid rgba(30,46,34,0.4);white-space:nowrap">WiFi 连接不稳定</td>
+              <td style="padding:14px 16px;border-bottom:1px solid rgba(30,46,34,0.4)">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="flex:1;height:8px;background:var(--surface);border:1px solid var(--border);position:relative;max-width:120px">
+                    <div style="position:absolute;left:0;top:0;bottom:0;width:21%;background:var(--red);opacity:0.7"></div>
+                  </div>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--red);min-width:32px">21%</span>
+                </div>
+              </td>
+              <td style="padding:14px 16px;border-bottom:1px solid rgba(30,46,34,0.4)">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="flex:1;height:8px;background:var(--surface);border:1px solid var(--border);position:relative;max-width:120px">
+                    <div style="position:absolute;left:0;top:0;bottom:0;width:23%;background:var(--red);opacity:0.7"></div>
+                  </div>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--red);min-width:32px">23%</span>
+                </div>
+              </td>
+              <td style="padding:14px 16px;border-bottom:1px solid rgba(30,46,34,0.4)">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="flex:1;height:8px;background:var(--surface);border:1px solid var(--border);position:relative;max-width:120px">
+                    <div style="position:absolute;left:0;top:0;bottom:0;width:9%;background:var(--red);opacity:0.7"></div>
+                  </div>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--red);min-width:32px">9%</span>
+                </div>
+              </td>
+              <td style="padding:14px 16px;border-bottom:1px solid rgba(30,46,34,0.4)">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="flex:1;height:8px;background:var(--surface);border:1px solid var(--border);position:relative;max-width:120px">
+                    <div style="position:absolute;left:0;top:0;bottom:0;width:10%;background:var(--red);opacity:0.7"></div>
+                  </div>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--red);min-width:32px">10%</span>
+                </div>
+              </td>
+            </tr>
+            <!-- 售后行 -->
+            <tr>
+              <td style="padding:14px 16px;font-size:13px;color:var(--text-muted);border-bottom:1px solid rgba(30,46,34,0.4);white-space:nowrap">售后服务响应差</td>
+              <td style="padding:14px 16px;border-bottom:1px solid rgba(30,46,34,0.4)">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="flex:1;height:8px;background:var(--surface);border:1px solid var(--border);position:relative;max-width:120px">
+                    <div style="position:absolute;left:0;top:0;bottom:0;width:8%;background:var(--accent3);opacity:0.8"></div>
+                  </div>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent3);min-width:32px">8%</span>
+                </div>
+              </td>
+              <td style="padding:14px 16px;border-bottom:1px solid rgba(30,46,34,0.4)">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="flex:1;height:8px;background:var(--surface);border:1px solid var(--border);position:relative;max-width:120px">
+                    <div style="position:absolute;left:0;top:0;bottom:0;width:21%;background:var(--accent3);opacity:0.8"></div>
+                  </div>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent3);min-width:32px">21%</span>
+                </div>
+              </td>
+              <td style="padding:14px 16px;border-bottom:1px solid rgba(30,46,34,0.4)">
+                <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim)">—</span>
+              </td>
+              <td style="padding:14px 16px;border-bottom:1px solid rgba(30,46,34,0.4)">
+                <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim)">—</span>
+              </td>
+            </tr>
+            <!-- 订阅行 -->
+            <tr>
+              <td style="padding:14px 16px;font-size:13px;color:var(--text-muted)">付费订阅壁垒</td>
+              <td style="padding:14px 16px">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="flex:1;height:8px;background:var(--surface);border:1px solid var(--border);position:relative;max-width:120px">
+                    <div style="position:absolute;left:0;top:0;bottom:0;width:10%;background:var(--accent2);opacity:0.8"></div>
+                  </div>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent2);min-width:32px">10%</span>
+                </div>
+              </td>
+              <td style="padding:14px 16px"><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim)">—</span></td>
+              <td style="padding:14px 16px"><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim)">—</span></td>
+              <td style="padding:14px 16px"><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim)">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:10px;font-family:var(--font-mono)">* 占比为该痛点差评在各品牌全部 Amazon 差评中的比例。"—"表示该品牌评论中该维度未构成显著集中。数据来源：Amazon 评论聚合分析（2024）。</p>
     </div>
   </div>
 </section>
@@ -782,8 +885,10 @@
     </div>
     <div class="opp-card red">
       <div class="opp-num">04</div>
-      <div class="opp-title">灌溉即服务（IaaS）</div>
-      <div class="opp-body">Irrigation-as-a-Service 模式为物业公司等 B 端用户提供设备租赁与集中维护方案，降低一次性采购门槛，同时提升系统维护与升级服务的用户粘性。商业模式创新可形成传统产品无法复制的竞争壁垒。</div>
+      <div class="opp-title">灌溉即服务（IaaS）
+        <span style="display:inline-block;margin-left:10px;font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;padding:3px 8px;border:1px solid rgba(255,184,48,0.3);color:var(--accent3);vertical-align:middle;font-weight:400">中长期布局 · 12–36 个月</span>
+      </div>
+      <div class="opp-body">Irrigation-as-a-Service 模式为物业公司等 B 端用户提供设备租赁与集中维护方案，降低一次性采购门槛，同时提升系统维护与升级服务的用户粘性。商业模式创新可形成传统产品无法复制的竞争壁垒。<strong style="display:block;margin-top:10px;color:var(--accent3);font-size:12px">注：此机会涉及商业模式转型，建议在产品站稳市场后分阶段推进，不建议作为首期进入策略。</strong></div>
     </div>
   </div>
 
