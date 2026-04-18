@@ -2,7 +2,7 @@
 
 **作者：张嘉敏 ·欧锐图实习项目 **
 
- **[点击查看完整交互式报告](https://jasmine420222.github.io/user-behavior-analysis/)**
+ **[点击查看完整交互式报告](https://jasmine420222.github.io/sprinkler-market-research/)**
 
 ---
 
