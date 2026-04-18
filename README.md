@@ -1,7 +1,9 @@
 # 智能洒水器北美市场调研报告
 
-**作者：张嘉敏** · 欧锐图实习项目 · 数据截止 2024–2025 Q1
- **[点击查看完整交互式报告](https://jasmine420222.github.io/sprinkler-market-research/)**
+**作者：张嘉敏 ·欧锐图实习项目 **
+
+ **[点击查看完整交互式报告](https://jasmine420222.github.io/user-behavior-analysis/)**
+
 ---
 
 ## 项目背景
